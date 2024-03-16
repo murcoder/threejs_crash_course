@@ -7,9 +7,9 @@ A really simple ThreeJS overview, based on [Three.js Crash Course For Beginners]
 
 | Technologie                                        | Version | Description                        |
 |----------------------------------------------------|---------|------------------------------------|
-| [ThreeJS](https://threejs.org/) | 7       | Graphic Javascript Framework based on JS API WebGL                   |
-| [GSAP](https://gsap.com/)   | 3       | Animation Toolkit |
-| [VITE](https://vitejs.dev/)   | 3       | Fast Frontend Building Tool |
+| [ThreeJS](https://threejs.org/) | 0.162.0       | Graphic Javascript Framework based on JS API WebGL                   |
+| [GSAP](https://gsap.com/)   | 3.12.5       | Animation Toolkit |
+| [VITE](https://vitejs.dev/)   | 5.1.6       | Fast Frontend Building Tool |
 
 
 ## Run
