@@ -2,7 +2,8 @@ import * as THREE from 'three';
 // 2# Styles
 import './style.css';
 // #3 Controls
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+//import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 // #5 Animation
 import { gsap } from "gsap";
 
