@@ -1,3 +1,4 @@
+// #1 Scene
 import * as THREE from 'three';
 // 2# Styles
 import './style.css';
@@ -27,9 +28,10 @@ const scene = new THREE.Scene();
  * Create our sphere
  * */
 const geometry = new THREE.SphereGeometry(3, 64, 32)
+// Noch keine Farbe
 const material = new THREE.MeshStandardMaterial({
   color: "#00ff83", // green
-  roughness: 0.5 // DO AT THE END 
+  roughness: 0.5 /** #5 DO AT THE END **/
 });
 // Combine both
 const mesh = new THREE.Mesh(geometry, material);
@@ -40,28 +42,40 @@ scene.add(mesh)
  * (1) Othographic / perspective
  * (2) Field of view (je weiter desto mehr verzerrung)
  * (3) Aspect ratio (Seitenverhältnis)
+ * near — Kamera ebene - near plane.
+ * far — Kamera ebene - far plane.
  */
+// #1 first add 800 x 600 anstatt auf konstante
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height)
 camera.position.z = 10 // Size? meters, centimeter? What you want. is relative
 scene.add(camera)
+// Erklärung Distanz. z position auf 101 ändern, near kamera auf 100
 
+
+/**
+ * 1# RENDERER
+ * How to render on screen? With Canvas --> index.html
+ */
+const canvas = document.querySelector('.webgl');
+
+// Since r118 WebGLRenderer automatically uses a WebGL 2 rendering context.
+// https://threejs.org/docs/#api/en/renderers/WebGL1Renderer
+const renderer = new THREE.WebGLRenderer({canvas})
+renderer.setSize(sizes.width, sizes.height)
+// 1# renderer.render(scene,camera) // Später entfernen wegen loop
 
 /**
  * 1# LIGHT
  * Warum kann man nichts sehen? LICHT FEHLT
+ *
+ * color - (optional) hexadecimal color of the light. Default is 0xffffff (white).
+ * intensity - (optional) numeric value of the light's strength/intensity. Default is 1.
+ * distance - Maximum range of the light. Default is 0 (no limit).
+ * decay - Der Betrag, um den das Licht entlang der Lichtentfernung gedimmt wird. Der Standardwert ist 2
  */
 const light = new THREE.PointLight(0xffffff, 70, 100, 1.7);
 light.position.set(0, 10, 10)
 scene.add(light)
-
-/**
- * 1# RENDERER
- * How to render on screen? With Canvas --> HTML
- */
-const canvas = document.querySelector('.webgl');
-const renderer = new THREE.WebGL1Renderer({canvas})
-renderer.setSize(sizes.width, sizes.height)
-// 1# renderer.render(scene,camera) // Später entfernen wegen loop
 
 
 /**
@@ -79,6 +93,8 @@ controls.enableZoom = false // Deaktiviert zoomen - ungeeignet für Webseite
 /**
  * 2# RESIZING & LOOP
  * Einfügen von styles.css
+ *
+ * Wird nur 1x aufgerufen --> Loop!
  */
 window.addEventListener("resize", () => {
   // Update Sizes - Check dass es immer aufgerufen wird:
@@ -88,7 +104,9 @@ window.addEventListener("resize", () => {
 
   // Update Camera
   camera.aspect = sizes.width / sizes.height
+  // Updates the camera projection matrix. Must be called after any change of parameters.
   camera.updateProjectionMatrix()
+  // Update renderer
   renderer.setSize(sizes.width, sizes.height)
 })
 

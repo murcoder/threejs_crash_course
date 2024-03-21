@@ -14,12 +14,12 @@ body,html{
 }
 
   /** 4# STYLING & TEXT */
- .webgl {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
- }
+.webgl {
+position: absolute;
+top: 0;
+left: 0;
+z-index: 1;
+}
 nav {
   color: white;
   z-index: 2;
