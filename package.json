@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.1.6"
+    "vite": "^6.0.9"
   },
   "dependencies": {
     "@lumaai/luma-web": "^0.2.2",
